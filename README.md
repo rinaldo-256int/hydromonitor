@@ -13,6 +13,7 @@ The frontend plays a pivotal role in delivering three distinct user interfaces. 
 # Hardware Setup
 Download and install [Arduino](https://www.arduino.cc/en/software) IDE if you haven't already done so. Subsequently, install the following Arduino IDE libraries if they are not currently installed, following the tutorial [here](https://support.arduino.cc/hc/en-us/articles/5145457742236-Add-libraries-to-Arduino-IDE):
 1. FastLED by Daniel Garcia
+2. esp32 by Espressif Systems, from the Board Manager tab in the Arduino IDE
 3. ArduinoJson by Benoît Blanchon 
 4. PubSubClient by Nick O’Leary
 5. DHT sensor library by Adafruit

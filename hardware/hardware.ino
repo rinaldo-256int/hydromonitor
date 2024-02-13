@@ -48,10 +48,13 @@
 // MQTT CLIENT CONFIG
 static const char* pubtopic = "620153775";                         // Add your ID number here
 static const char* subtopic[] = { "620153775_sub", "/elet2415" };  // Array of Topics(Strings) to subscribe to
-static const char* mqtt_server = "dbs.msjrealtms.com";                          // Broker IP address or Domain name as a String
+static const char* mqtt_server = "www.yanacreations.com";                          // Broker IP address or Domain name as a String
 static uint16_t mqtt_port = 1883;
 
 // WIFI CREDENTIALS
+//const char* ssid = "CWC-9128576 2.4";   // Add your Wi-Fi ssid
+//const char* password = "sb3Rkgqzxtcy";  // Add your Wi-Fi password
+
 const char* ssid = "MonaConnect";   // Add your Wi-Fi ssid
 const char* password = "";  // Add your Wi-Fi password
 
@@ -175,7 +178,7 @@ void vUpdate(void* pvParameters) {
       doc["timestamp"] = getTimeStamp();
       doc["temperature"] = t;
       doc["humidity"] = h;
-        doc["heat index"] = calcHeatIndex(t, h);
+        doc["heatindex"] = calcHeatIndex(t, h);
 
       serializeJson(doc, message);  // Seralize / Covert JSon object to JSon string and store in char* array
       publish(pubtopic, message);   // Publish to a topic that only the Frontend subscribes to.
@@ -197,9 +200,12 @@ unsigned long getTimeStamp(void) {
 
 void callback(char* topic, byte* payload, unsigned int length) {
   // ############## MQTT CALLBACK  ######################################
-  // RUNS WHENEVER A MESSAGE IS RECEIVED ON A TOPIC SUBSCRIBED TO
+  // RUNS WHENEVER A MESSAGE IS RECEIVED ON A TOPIC SUBSCRIBED TOhardware | Arduino IDE 2.2.1
+
+
 
   Serial.printf("\nMessage received : ( topic: %s ) \n", topic);
+
   char* received = new char[length + 1]{ 0 };
 
   for (int i = 0; i < length; i++) {
@@ -228,6 +234,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     // 1. EXTRACT ALL PARAMETERS: NODES, RED,GREEN, BLUE, AND BRIGHTNESS FROM JSON OBJECT
 
     // 2. ITERATIVELY, TURN ON LED(s) BASED ON THE VALUE OF NODES. Ex IF NODES = 2, TURN ON 2 LED(s)
+
 
     // 3. ITERATIVELY, TURN OFF ALL REMAINING LED(s).
     //‘{"type": "controls", "brightness": 255, "leds": 7, "color": { "r": 255, "g": 255, "b": 255, "a": 1 } }’

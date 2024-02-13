@@ -41,7 +41,7 @@
               color="secondary"
               label="LED Nodes"
               direction="horizontal"
-              min="1"
+              min="0"
               max="7"
               step="1"
               show-ticks
@@ -144,15 +144,17 @@ const indicatorColor = computed(() => {
 <style scoped>
 /** CSS STYLE HERE */
 
-.container {
-  height: 100%;
-  width: 100%;
-}
 .sheet {
   color: surface;
   elevation: "0";
   max-width: 800;
   width: 100%;
+}
+
+.container {
+  background-color: #f5f5f5;
+  width: 1200px;
+  height: 500px;
 }
 .row {
   max-width: 1200px;
